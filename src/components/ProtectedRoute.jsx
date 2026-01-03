@@ -1,16 +1,18 @@
-import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import {AuthContext} from "../context/AuthContext"
+import { useAuth } from "./AuthContext";
 
-const ProtectedRoute =({children,role})=>{
-    const{isAuth,role:userRole}=useContext(AuthContext);
+const PrivateRoute = ({ children, role }) => {
+  const { isAuth, role: userRole } = useAuth();
 
-    if(!isAuth)return <Navigate to="/"/>;
-    if(role !== userRole)
-        return
-    <Navigate to="/"/>;
+  if (!isAuth) {
+    return <Navigate to="/" />;
+  }
 
+  if (role && userRole !== role) {
+    return <Navigate to="/" />;
+  }
 
-    return children;
+  return children; // 🔥 THIS LINE IS THE KEY
 };
-export default ProtectedRoute;
+
+export default PrivateRoute;

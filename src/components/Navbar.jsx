@@ -1,19 +1,7 @@
-import { useRef, useEffect } from "react";
-
 const Navbar = ({ setSearch, setType, setParking }) => {
-  const searchRef = useRef();
-
-  useEffect(() => {
-    searchRef.current.focus();
-  }, []);
-
   return (
-    <div className="navbar">
-      <input
-        ref={searchRef}
-        placeholder="Search"
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div style={{ display: "flex", gap: "10px", padding: "10px" }}>
+      <input placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
 
       <select onChange={(e) => setType(e.target.value)}>
         <option value="">All Types</option>
@@ -28,8 +16,8 @@ const Navbar = ({ setSearch, setType, setParking }) => {
 
       <select onChange={(e) => setParking(e.target.value)}>
         <option value="">All Parking</option>
-        <option value="true">Parking</option>
-        <option value="false">No Parking</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
       </select>
     </div>
   );
