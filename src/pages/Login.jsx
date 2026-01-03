@@ -1,26 +1,35 @@
-import { useState , useContext } from "react";
+
+import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-const Login =()=>{
-    const{login}=useContext(AuthContext);
+const Login = () => {
+  const { login } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
+  const handleLogin = () => {
+    login(email.trim(), password.trim());
+  };
 
-    return(
+  return (
+    <div className="login">
+      <h2>Login</h2>
 
-        <div className="login">
-            <h2>Login</h2>
-            <input placeholder="email" onChange={(e)=>
-                setEmail(e.target.values)} />
-           
-            <input placeholder="password" onChange={(e)=>
-                setPassword(e.target.values)} />
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-                <button onClick ={()=>
-                    login(email,password)}> Login
-                </button>
-        </div>
-    );
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
 };
+
 export default Login;
