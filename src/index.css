@@ -1,1 +1,33 @@
-@import "tailwindcss";
+body{
+    font-family: sans-serif;
+}
+.login,.sidebar{
+    width: 250px;
+    margin: 20px;
+
+}
+input,select,button{
+    display: block;
+    margin: 5px 0;
+}
+.navbar{
+display: flex;
+gap: 10px;
+padding: 10px;
+}
+.admin{
+display: flex;
+}
+.list{
+display: flex;
+flex-wrap: wrap;
+}
+.card{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+.card img{
+    width: 100%;
+}
